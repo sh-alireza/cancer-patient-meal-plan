@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+    haoma_meal_plan:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: haoma_meal_plan:v1.0
+        hostname: haoma_meal_plan
+        container_name: haoma_meal_plan
+        restart: always
+        networks:
+            - services_net
+        ports:
+            - 8081:8080
+
+networks:
+  services_net:
+    external: True
