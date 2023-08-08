@@ -33,8 +33,10 @@ openai.api_key = OPENAI_API_KEY
 model_name = "gpt-3.5-turbo-0613"
 
 # Database url
-url = "http://data.haoma-health.com/api/v1/recipes?rpp=300"
-
+url = "" # db url
+if url =="":
+    logging.error("the url can't be empty!!")
+    sys.exit()
 # Send a GET request to the Database URL and check the status
 resp = requests.get(url)
 if resp.status_code != 200:
@@ -71,7 +73,7 @@ def meal_plan(symptoms:str,exception_days:str):
     you are given with a dictionary of foods with their symptoms and id in the database. suggest two food for each meal. \
     use your expert knowledge and generate a meal plan for a week of \
     this patient life. THIS IS IMPORTANT: only for {exception_days}, choose light foods, easy to digest, NOT sugary, NOT spicy, NOT cheesy, NOT processed.
-    Do NOT REPEAT THE FOODS IN THE WEEK.
+    DO NOT REPEAT THE FOODS IN THE WEEK.
     the user will give you some symptoms that your meal plan MUST focus on those, try to have those symptoms in every meal.
     also check if the food is good for the meal time, for example don't put chicken with rice for breakfast.
     
