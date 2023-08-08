@@ -1,13 +1,13 @@
 version: '3.3'
 
 services:
-    haoma_meal_plan:
+    mealplan:
         build:
             context: .
             dockerfile: Dockerfile
-        image: haoma_meal_plan:v1.0
-        hostname: haoma_meal_plan
-        container_name: haoma_meal_plan
+        image: mealplan:v1.0
+        hostname: mealplan
+        container_name: mealplan
         restart: always
         networks:
             - services_net
@@ -16,4 +16,3 @@ services:
 
 networks:
   services_net:
-    external: True
